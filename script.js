@@ -1,7 +1,7 @@
 let title = document.querySelector('h1');
 let list = document.querySelector('ul')
 
-//Mock data
+//Mock data to populate the todo list
 let todos = [
     {
         title:"Do the dishes",
