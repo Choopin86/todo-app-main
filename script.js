@@ -33,10 +33,12 @@ function updateTodoList() {
 updateTodoList();
 
 //Handle new todos
+const form = document.querySelector('#todo-form')
 const newItem = document.querySelector('input')
-const submit = document.querySelector('button')
 
-submit.addEventListener('click', () => {
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
     const newTodoTitle = newItem.value.trim();
 
     if (newTodoTitle) {
