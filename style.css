@@ -1,0 +1,79 @@
+html, body {
+    height: 100%
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(44, 32, 137);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    border: .5px solid black;
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: rgb(186, 173, 225);
+    box-shadow: 2px 2px 2px 2px rgb(42, 14, 75);
+}
+
+#todo-form {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: x-large;
+    text-align: center;
+}
+
+.to-do {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    margin-bottom: .25rem;
+}
+
+.done-button, .delete-button {
+    margin: .5rem;
+    padding: .3rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.done-button {
+    background-color: rgb(24, 158, 24);
+    color: aliceblue;
+}
+
+.delete-button {
+    background-color: red;
+    color: aliceblue;
+}
+
+.new-todo, .submit-button {
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.submit-button {
+    background-color: rgb(42, 14, 75);
+    color: aliceblue;
+}
+
+.attribution {
+    padding: 2rem;
+    display: block;
+    color: aliceblue;
+}
+
+.links {
+    color: aliceblue;
+}

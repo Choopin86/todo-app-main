@@ -23,10 +23,12 @@ function updateTodoList() {
     todos.forEach((todo, index) => {
         const li = document.createElement('li');
         li.textContent = todo.title;
+        li.classList.add('to-do')
 
         const doneButton = document.createElement('button')
         doneButton.textContent = 'Done';
-        doneButton.style.margin = "10px";
+        doneButton.classList.add('done-button');
+        // doneButton.style.margin = "10px";
         doneButton.addEventListener('click', () => {
             todos[index].isCompleted = !todos[index].isCompleted;
             updateTodoList();
@@ -34,7 +36,8 @@ function updateTodoList() {
         
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.style.margin = '10px';
+        deleteButton.classList.add('delete-button');
+        // deleteButton.style.margin = '10px';
         deleteButton.addEventListener('click', () => {
             todos.splice(index, 1);
             updateTodoList();
