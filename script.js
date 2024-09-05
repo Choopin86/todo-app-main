@@ -1,8 +1,8 @@
-let title = document.querySelector('h1');
-let list = document.querySelector('ul')
+const title = document.querySelector('h1');
+const list = document.querySelector('ul')
 
 //Mock data to populate the todo list
-let todos = [
+const todos = [
     {
         title:"Do the dishes",
         isCompleted: false
@@ -17,38 +17,51 @@ let todos = [
     }
 ]
 
-function updateTodoList() {
-    list.innerHTML = '';
+const createButton = (text, onEvent) => {
+    const button = document.createElement('button');
+    button.textContent = text;
+    button.style.margin = '10px';
+    button.addEventListener("click", onEvent);
 
-    todos.forEach((todo, index) => {
-        const li = document.createElement('li');
-        li.textContent = todo.title;
+    return button;
+}
 
-        const doneButton = document.createElement('button')
-        doneButton.textContent = 'Done';
-        doneButton.style.margin = "10px";
-        doneButton.addEventListener('click', () => {
-            todos[index].isCompleted = !todos[index].isCompleted;
-            updateTodoList();
-        })
-        
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.style.margin = '10px';
-        deleteButton.addEventListener('click', () => {
+const createTodoElement = (todo, index) => {
+    const li = document.createElement("li");
+    li.textContent = todo.title;
+
+        const doneButton = createButton("Done", (event) => {
+            const newState = !todos[index].isCompleted;
+            todos[index].isCompleted = newState;
+
+            if(newState) {
+                event.target.parentElement.style.textDecoration = "line-through";
+            } else {event.target.parentElement.style.textDecoration = "none";}
+
+        });
+
+        const deletButton = createButton("Delete", () => {
             todos.splice(index, 1);
             updateTodoList();
-        })
+        });
 
         if (todo.isCompleted) {
-            li.style.textDecoration = 'line-through';
+            li.style.textDecoration = "line-through";
         }
 
         li.appendChild(doneButton);
         li.appendChild(deleteButton);
-        list.appendChild(li);
-    
-    })
+        return li;
+}
+
+function updateTodoList() {
+    list.innerHTML = '';
+
+    const todoElements = todos.map((todo, index) => {
+        createTodoElement(todo, index);
+    });
+
+    list.append(...todoElements);
 
     let numOfTasks = todos.length;
     title.textContent = (numOfTasks === 0 ? `You have 0 to-dos`: `You have ${numOfTasks} to-dos`)
@@ -74,7 +87,8 @@ form.addEventListener('submit', (e) => {
 
         newItem.value = "";
 
-        updateTodoList();
+        const newTodoElement = createTodoElement(newTodo, todos.length -1);
+        list.append(newTodoElement);
     }
 })
 
