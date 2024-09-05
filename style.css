@@ -27,13 +27,14 @@ body {
 h1 {
     font-size: x-large;
     text-align: center;
+    font-weight: 600;
 }
 
 .to-do {
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-left: .25rem;
     padding-right: .25rem;
     margin-bottom: .25rem;
