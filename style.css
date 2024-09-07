@@ -1,80 +1,111 @@
 html, body {
-    height: 100%
+    height: 100%;
 }
+
+* {
+    --bg-color: #181824;
+    --text-color: aliceblue;
+    --todo-color: #24273d;
+    --border-radius: 0.25rem;
+    --done-bg-color: rgb(24, 158, 24, 0.25);
+    --delete-bg-color: rgb(255, 0, 0, 0.25);
+  }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(44, 32, 137);
+    display: grid;
+    place-content: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.container {
-    border: .5px solid black;
-    border-radius: 10px;
-    padding: 2rem;
-    background-color: rgb(186, 173, 225);
-    box-shadow: 2px 2px 2px 2px rgb(42, 14, 75);
-}
-
-#todo-form {
-    display: flex;
-    flex-direction: column;
 }
 
 h1 {
     font-size: x-large;
-    text-align: center;
     font-weight: 600;
 }
 
-.to-do {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding-left: .25rem;
-    padding-right: .25rem;
-    margin-bottom: .25rem;
+ul {
+    margin: 0;
+    padding: 0;
 }
 
-.done-button, .delete-button {
-    margin: .5rem;
-    padding: .3rem;
-    border-radius: 5px;
+button, a {
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+input, button {
     border: none;
+}
+
+.container {
+    width: 100%;
+}
+
+@media (min-width: 720px) {
+    .container {
+        max-width: 500px;
+    }
+}
+
+.app {
+    width: 100%;
+}
+
+.to-do {
+    background: var(--todo-color);
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ffffff25;
+}
+
+.to-do:last-of-type {
+    border-bottom: none;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.to-do:hover {
+    transform: scale(1.01);
+}
+
+.done-button,
+.delete-button {
+    padding: 0.3rem;
+    border-radius: var(--border-radius);
 }
 
 .done-button {
-    background-color: rgb(24, 158, 24);
-    color: aliceblue;
+    background-color: var(--done-bg-color);
+    margin-inline-start: auto;
 }
 
 .delete-button {
-    background-color: red;
-    color: aliceblue;
+    background-color: var(--delete-bg-color);
+    margin-inline-start: 0.5rem;
 }
 
-.new-todo, .submit-button {
-    padding: .5rem;
-    margin: .5rem;
-    border-radius: 10px;
-    border: none;
+#todo-form {
+    display: flex;
+    gap: 0.5 rem;
+    margin-top: 1rem;
+}
+
+.new-todo,
+.submit-button {
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+}
+
+.new-todo {
+    flex: 1;
 }
 
 .submit-button {
-    background-color: rgb(42, 14, 75);
-    color: aliceblue;
+    background-color: var(--todo-color);
 }
 
 .attribution {
     padding: 2rem;
-    display: block;
-    color: aliceblue;
-}
-
-.links {
-    color: aliceblue;
 }
